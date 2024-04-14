@@ -22,3 +22,33 @@
 
 // visit this to know how many service worker your chrome have ==> chrome://serviceworker-internals/
 
+// =========================================================================================================
+
+
+// There are two API to creating notification
+
+// 1. Desktop Notification, for Window and worker 
+// 2. Web Push, for Service Workers.
+
+// web push and Notication both are different with the first method you can just send notification to Desktop in the 2nd method we will do web-push to wake-up our service worker and then our service worker will create notication.
+
+
+// Step 1. 
+// ask for Notification permission 
+
+if('Notification' in window){
+    if(Notification.permission === "granted"){
+
+    }
+    status = await Notification.requestPermission();
+    //it can be 'granted', 'denied' and 'default'
+}
+
+// Step 2. Create the notification 
+// old desktop Notification API; not available in service workers
+
+const n = new Notification('Title', {
+    body: 'Text',
+    icon: 'Image-url'
+});
+// we can close it later n.close();
