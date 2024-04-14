@@ -1,6 +1,7 @@
 // JavaScript in background
 
 // visibility Change
+navigator.serviceWorker.register("/sw.js");
 
 window.addEventListener('visibilitychange', (e)=>{
     if(document.visibilityState === 'visible'){
